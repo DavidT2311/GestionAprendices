@@ -35,46 +35,35 @@ do {
     //Creacion de switch
     switch(opcion) {
         case 1:
-            llamarAprendices(opcion);
+            llamarAprendicesProgramas(opcion);
             break;
         case 2:
-            llamarProgramas(opcion);
+            llamarAprendicesProgramas(opcion);
             break;
     };
 
 } while (opcion != 3);
 
 
-function llamarAprendices() {
-    //Creacion del CRUD
-    let opcion;
+function llamarAprendicesProgramas(opcion) {
+    let nombre_opcion;
+    if (opcion == 1) {
+        nombre_opcion = "Aprendiz";
+    } 
+    if (opcion == 2) {
+        nombre_opcion = "Programas";
+    }
+    
     do {
         opcion = parseInt(prompt(
             `Eliga una opcion
-            1. Listar aprendices
-            2. Ingrear un aprendiz
-            3. Actualizar un aprendiz
-            4. Eliminar un aprendiz
+            1. Listar ${nombre_opcion}
+            2. Ingresar un ${nombre_opcion}
+            3. Actualizar un ${nombre_opcion}
+            4. Eliminar un ${nombre_opcion}
             5. Volver al menu de aprendices-programas
             `
         ));
     } while (opcion != 5);
-
-}
-
-function llamarProgramas(){
-
-    let opcion;
-    do {
-        opcion = parseInt(prompt(
-        `Eligar una opcion
-        1: Listar ficha
-        2: Ingresar un ficha
-        3: Actualizar un ficha
-        4: Eliminar ficha
-        5: volver al menu de aprendices-programas `
-        ));
-    } while (opcion != 5);
-
 }
 
