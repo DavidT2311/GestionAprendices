@@ -35,13 +35,12 @@ do {
     //Creacion de switch
     switch(opcion) {
         case 1:
-            llamarAprendices();
+            llamarAprendices(opcion);
             break;
-
         case 2:
+            llamarProgramas(opcion);
+            break;
     };
-
-
 
 } while (opcion != 3);
 
@@ -59,8 +58,22 @@ function llamarAprendices() {
             5. Volver al menu de aprendices-programas
             `
         ));
+    } while (opcion != 5);
 
+}
 
+function llamarProgramas(){
+
+    let opcion;
+    do {
+        opcion = parseInt(prompt(
+        `Eligar una opcion
+        1: Listar ficha
+        2: Ingresar un ficha
+        3: Actualizar un ficha
+        4: Eliminar ficha
+        5: volver al menu de aprendices-programas `
+        ));
     } while (opcion != 5);
 
 }
