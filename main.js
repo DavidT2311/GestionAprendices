@@ -40,6 +40,10 @@ do {
         case 2:
             llamarAprendicesProgramas(opcion);
             break;
+        case 3:
+            break;
+        default:
+            alert("Digite una opcion correcta");
     };
 
 } while (opcion != 3);
