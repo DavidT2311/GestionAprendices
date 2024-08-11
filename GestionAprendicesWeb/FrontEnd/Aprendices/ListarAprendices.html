@@ -1,0 +1,36 @@
+{% extends "Bases/Base.html" %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+
+    <h1>Listado de aprendices</h1>
+
+    <table class="table table-striped">
+        <thead class="table-success">
+            <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in listaAprendices %}
+                {% if i.Estado == True %}
+                    <tr>
+                        <td>{{ i.Documento }}</td>
+                        <td>{{ i.Nombre }}</td>
+                        <td>{{ i.Apellido }}</td>
+                        <td>{{ i.Telefono }}</td>
+                        <td>{{ i.Direccion }}</td>
+                        <td>Activo</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -2,6 +2,6 @@ from django.shortcuts import render
 from .utils import obtener_aprendices
 
 def listar_aprendices(request):
-    obtener_aprendices()
+    datosAprendices = obtener_aprendices()
 
-    return render(request, "ListarAprendices.html")
+    return render(request, "Aprendices/ListarAprendices.html", datosAprendices)

@@ -1,3 +1,11 @@
-from django.db import models
+#from django.db import models
 
-# Create your models here.
+class AprendicesModels:
+    def __init__(self, documento, nombre, apellido, telefono, direccion, estado):
+        self.Documento = documento
+        self.Nombre = nombre
+        self.Apellido = apellido
+        self.Telefono = telefono
+        self.Direccion = direccion
+        self.Estado = estado
+

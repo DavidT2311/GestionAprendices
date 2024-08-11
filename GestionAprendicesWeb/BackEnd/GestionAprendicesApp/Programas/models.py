@@ -1,3 +1,6 @@
-from django.db import models
+#from django.db import models
 
-# Create your models here.
+class ProgramasModels:
+    def __init__(self, numeroFicha, programa):
+        self.Numero_Ficha = numeroFicha
+        self.Programa = programa
