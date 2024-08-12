@@ -4,7 +4,14 @@
 
 {% block content %}
 
-    <h1>Listado de aprendices</h1>
+    <div class="row mt-3 mb-4">
+        <div class="col-md-10">
+            <h1>Listado de aprendices</h1>
+        </div>
+        <div class="col-md-2 mt-auto">
+            {% include "Botones/Aniadir.html" with ModalEleccion="Aprendices" %}
+        </div>
+    </div>
 
     <table class="table table-striped">
         <thead class="table-success">
@@ -15,6 +22,7 @@
                 <th>Telefono</th>
                 <th>Direccion</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -27,10 +35,16 @@
                         <td>{{ i.Telefono }}</td>
                         <td>{{ i.Direccion }}</td>
                         <td>Activo</td>
+                        <td>
+                            {% include "Botones/Editar.html" with PaginaElegida="ListarAprendices" %}
+                            {% include "Botones/Eliminar.html" with PaginaElegida="ListarAprendices" %}
+                        </td>
                     </tr>
                 {% endif %}
             {% endfor %}
         </tbody>
     </table>
+
+    {% include "Aprendices/AniadirAprendices.html" with ModalEleccion="Aprendices" %}
 
 {% endblock %}

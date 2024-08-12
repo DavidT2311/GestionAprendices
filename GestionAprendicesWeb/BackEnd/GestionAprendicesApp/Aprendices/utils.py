@@ -13,4 +13,29 @@ def obtener_aprendices():
 
         return {"listaAprendices": listaAprendices}
 
+def insertar_aprendices(documento, nombre, apellido, telefono, direccion):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT Documento FROM Aprendices")
+        documentoEnDB = cursor.fetchall()
+
+        listaDocumentos = []
+
+        for i in list(documentoEnDB):
+            for j in i:
+                listaDocumentos.append(int(j))
+
+        estaRepetido = False
+        for doc in listaDocumentos:
+            if doc == int(documento):
+                estaRepetido = True
+
+        if estaRepetido == False:
+            cursor.execute(f""" INSERT INTO Aprendices (Documento, Nombre, Apellido, Telefono, Direccion)
+                    VALUES ('{documento}', '{nombre}', '{apellido}', '{telefono}', '{direccion}')
+                    """)
+            return not(estaRepetido)
+
+        else:
+            return not(estaRepetido)
+
 
