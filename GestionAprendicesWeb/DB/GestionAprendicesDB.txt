@@ -1,0 +1,50 @@
+USE GestionAprendices
+
+CREATE TABLE Programas (
+	Numero_Ficha BIGINT NOT NULL,
+	Nombre_Programa VARCHAR (50), 
+	CONSTRAINT PK_Numero_Ficha PRIMARY KEY (Numero_Ficha)
+);
+GO
+
+CREATE TABLE Aprendices (
+	Documento BIGINT NOT NULL,
+	Nombre VARCHAR (50),
+	Apellido VARCHAR (50),
+	Telefono VARCHAR (15),
+	Direccion VARCHAR (50),
+	Estado BIT NOT NULL,
+	CONSTRAINT PK_Documento PRIMARY KEY (Documento),
+);
+GO
+
+ALTER TABLE Aprendices
+ADD CONSTRAINT DF_Estado DEFAULT 1 FOR Estado
+GO
+
+CREATE TABLE AprendicesProgramas (
+	ID_Registro INT NOT NULL IDENTITY (1, 1),
+	Documento BIGINT NOT NULL,
+	Numero_Ficha BIGINT NOT NULL,
+	Cantidad_Aprendices INT,
+	CONSTRAINT PK_ID_Registro PRIMARY KEY (ID_Registro),
+	CONSTRAINT FK_Documento FOREIGN KEY (Documento) REFERENCES Aprendices (Documento),
+	CONSTRAINT FK_Numero_Ficha FOREIGN KEY (Numero_Ficha) REFERENCES Programas (Numero_Ficha)
+);
+GO
+
+ALTER TABLE AprendicesProgramas
+ADD CONSTRAINT DF_Estado_Programa DEFAULT 1 FOR Estado_Programa
+GO
+
+
+
+INSERT INTO Programas
+VALUES (2956309, 'ADSO')
+
+INSERT INTO Aprendices (Documento, Nombre, Apellido, Telefono, Direccion)
+VALUES (1018235368, 'Jojhan', 'David', '3116940579', 'Calle 101')
+
+INSERT INTO AprendicesProgramas (Documento, Numero_Ficha)
+VALUES (1018235368, 2956309)
+
