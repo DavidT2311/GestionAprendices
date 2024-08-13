@@ -1,3 +1,4 @@
+<!-- Modal que se activara para añadir un aprendiz -->
 <div class="modal fade" id="{{ ModalEleccion }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -7,6 +8,7 @@
             </div>
 
             <div class="modal-body">
+                <!-- Formulario para pedir los datos al usuario que se ingresara en la tabla Aprendices -->
                 <form action="{% url 'AgregarAprendiz' %}" method="post"> {% csrf_token %}
                     <div class="col-md-12 mb-4">
                         <label for="" class="form-label">Documento</label>

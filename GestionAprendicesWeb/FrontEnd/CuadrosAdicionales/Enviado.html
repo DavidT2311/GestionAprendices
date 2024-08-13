@@ -1,7 +1,10 @@
+<!-- Heredamos la plantilla base -->
 {% extends "Bases/Base.html" %}
 
+<!-- Colocamos el contenido que se vera en la pagina -->
 {% block content %}
 
+    <!-- Modal que saldra luego de enviar el formulario correctamente -->
     <div class="modal" tabindex="-1" id="CerrarModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -19,6 +22,7 @@
         </div>
     </div>
 
+    <!-- Esta funcion y este boton permite que la ventana modal salga automaticamente apenas se ingrese a la pagina -->
     <button hidden id="triggerModal" data-bs-toggle="modal" data-bs-target="#CerrarModal"></button>
 
     <script>

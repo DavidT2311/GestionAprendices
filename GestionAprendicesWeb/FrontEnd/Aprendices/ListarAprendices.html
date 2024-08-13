@@ -1,19 +1,23 @@
+<!-- Heredamos la plantila base -->
 {% extends "Bases/Base.html" %}
 
-{% block title %} Inicio {% endblock %}
+<!-- Agregamos el titulo de la pagina -->
+{% block title %} Aprendices {% endblock %}
 
+<!-- Colocamos el contenido que se vera en la pagina -->
 {% block content %}
 
     <div class="row mt-3 mb-4">
         <div class="col-md-10">
-            <h1>Listado de aprendices</h1>
+            <h1 class="fw-bolder">Listado de aprendices</h1>
         </div>
+        <!-- Incluimos el boton para agregar un Aprendiz o Programa -->
         <div class="col-md-2 mt-auto">
             {% include "Botones/Aniadir.html" with ModalEleccion="Aprendices" %}
         </div>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="Tablas_Contenido_Aprendices">
         <thead class="table-success">
             <tr>
                 <th>Documento</th>
@@ -26,7 +30,9 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Recorremos el objeto que se le pasa desde la vista -->
             {% for i in listaAprendices %}
+                <!-- Verificamos que el estado sea verdadero para mostrar los aprendices que estan activos -->
                 {% if i.Estado == True %}
                     <tr>
                         <td>{{ i.Documento }}</td>
@@ -36,6 +42,7 @@
                         <td>{{ i.Direccion }}</td>
                         <td>Activo</td>
                         <td>
+                            <!-- Incluimos los botones para Editar y Eliminar -->
                             {% include "Botones/Editar.html" with PaginaElegida="ListarAprendices" %}
                             {% include "Botones/Eliminar.html" with PaginaElegida="ListarAprendices" %}
                         </td>
@@ -45,6 +52,7 @@
         </tbody>
     </table>
 
+    <!-- Incluimos la ventana modal para agregar un aprendiz -->
     {% include "Aprendices/AniadirAprendices.html" with ModalEleccion="Aprendices" %}
 
 {% endblock %}
