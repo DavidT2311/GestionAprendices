@@ -3,6 +3,7 @@ let lista_aprendices = [];
 let lista_programas = [];
 
 //Creando modelo
+//Arreglo
 let Aprendiz = {
     documento: "",
     nombre: "",
@@ -68,6 +69,51 @@ function llamarAprendicesProgramas(opcion) {
             5. Volver al menu de aprendices-programas
             `
         ));
+        switch(opcion) {
+            case 1:
+                ListarAprendices()
+                break;
+            case 2:
+                IngresarAprendiz()
+                break;
+            case 3:
+                ActualizarAprendiz()
+                break;
+            case 4:
+                EliminarAprendiz()
+                break;
+                
+        }
+        switch(opcion){
+
+        }
     } while (opcion != 5);
+
+    
 }
 
+
+function ListarAprendices() { 
+    alert("En Listar aprendiz")
+  }
+
+function IngresarAprendiz() {
+    alert("Registrar nuevos aprendices")
+
+}
+
+function ActualizarAprendiz() {
+    alert("Actualizar aprendices")
+}
+
+function EliminarAprendiz() {
+    alert("Eliminar aprendices")
+}
+
+function ListarPrograma() {}
+
+function IngresarPrograma() {}
+
+function ActualizarPrograma() {}
+
+function EliminarPrograma() {}
