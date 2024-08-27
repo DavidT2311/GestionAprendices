@@ -1,19 +1,22 @@
+let lista_aprendices = [];
+let lista_programas = [];
+
 //Creando modelo aprendiz
-let Aprendiz = { //Modelo para los aprendices
-    documento: "",
-    nombre: "",
-    apellido: "",
-    telefono: "",
-    direccion: "",
-    estado: Boolean,
-    estado_programa: Boolean,
-    programa: 0,
+function aprendizModel(documento, nombre, apellido, telefono, direccion, programa) { //Modelo para los aprendices
+    this.documento = documento;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.telefono = telefono;
+    this.direccion = direccion;
+    this.estado = true;
+    this.estado_programa = true;
+    this.programa = programa;
 };
 
 //Creando modelo programa
-let Programa = { //Modelo para los programas
-    numero_ficha: "",
-    nombre_programa: "",
+function programaModel (numero_ficha, nombre_programa) { //Modelo para los programas
+    this.numero_ficha = numero_ficha;
+    this.nombre_programa = nombre_programa;
 };
 
 const menuInicio = () => {
@@ -47,8 +50,6 @@ const menuInicio = () => {
 
 //Funcion para los metodos de aprendices
 const llamarAprendices = () => {
-    //Creando lista para guardar los aprendices
-    let lista_aprendices = [];
 
     let opcion;
     do {
@@ -65,16 +66,16 @@ const llamarAprendices = () => {
         //Switch para elegir un metodo de los aprendices
         switch(opcion) {
             case 1:
-                ListarAprendices(lista_aprendices);
+                ListarAprendices();
                 break;
             case 2:
-                lista_aprendices = IngresarAprendiz();
+                IngresarAprendiz();
                 break;
             case 3:
-                ActualizarAprendiz(lista_aprendices);
+                ActualizarAprendiz();
                 break;
             case 4:
-                EliminarAprendiz(lista_aprendices);
+                EliminarAprendiz();
                 break;
             case 5:
                 break;
@@ -86,8 +87,6 @@ const llamarAprendices = () => {
 
 //Funcion para los metodos de programas
 const llamarProgramas = () => {
-    //Creando lista para guardar los programas
-    let lista_programas = [];
 
     let opcion;
     do {
@@ -104,16 +103,16 @@ const llamarProgramas = () => {
         //Switch para elegir un metodo de los programas
         switch(opcion) {
             case 1:
-                ListarProgramas(lista_programas);
+                ListarProgramas();
                 break;
             case 2:
-                lista_programas = IngresarPrograma();
+                IngresarPrograma();
                 break;
             case 3:
-                ActualizarPrograma(lista_programas);
+                ActualizarPrograma();
                 break;
             case 4:
-                EliminarPrograma(lista_programas);
+                EliminarPrograma();
                 break;
             case 5:
                 break;
@@ -124,66 +123,78 @@ const llamarProgramas = () => {
 };
 
 //Funcion para listar todos los aprendices
-const ListarAprendices = (lista_aprendices) => { 
-    let mensaje;
-    for (let i = 0; i < lista_aprendices.length; i++) {
-        mensaje += `${lista_aprendices[i]}\n`;
+const ListarAprendices = () => {
+    if (lista_aprendices.length == 0) {
+        alert("Aun no hay aprendices");
+    } else {
+        let mensaje_aprendices = "";
+        //Recorrer la lista de aprendices
+        for (let objeto of lista_aprendices) {
+            mensaje_aprendices += `Documento : ${objeto.documento}, Nombre : ${objeto.nombre}\n`;
+        };
+        alert(mensaje_aprendices);
     };
-    alert("Lista de aprendices\n", mensaje);
 };
 
 const IngresarAprendiz = () => {
     //Guardar aprendices
     let cantidad = parseInt(prompt("Digite la cantidad de aprendices que desea guardar"));
-    let lista_aprendices = [];
 
+    //Lista aprendices
     for (let i = 0; i < cantidad; i++) {
-        Aprendiz.documento = prompt("Digite el documento");
-        Aprendiz.nombre = prompt("Digite el nombre");
-        Aprendiz.apellido = prompt("Digite el apellido");
-        Aprendiz.telefono = prompt("Digite el telefono");
-        Aprendiz.direccion = prompt("Digite la direccion");
-        Aprendiz.estado = Boolean(prompt(true));
-        Aprendiz.estado_programa = Boolean(prompt(true));
-        Aprendiz.programa = parseInt(prompt("Digite el numero de ficha del programa"));
+        let documento = prompt("Digite el documento");
+        let nombre = prompt("Digite el nombre");
+        let apellido = prompt("Digite el apellido");
+        let telefono = prompt("Digite el telefono");
+        let direccion = prompt("Digite la direccion");
+        let programa = parseInt(prompt("Digite el numero de ficha del programa"));
         
+        let nuevo_aprendiz = new aprendizModel(documento, nombre, apellido, telefono, direccion, programa);
         //Se guardan los cambios en los aprendices
-        return Aprendiz;
+        lista_aprendices.push(nuevo_aprendiz);
     };
 };
 
-const ActualizarAprendiz = (lista_aprendices) => {
+const ActualizarAprendiz = () => {
     alert("Act aprendiz");
 };
 
-const EliminarAprendiz = (lista_aprendices) => {
+const EliminarAprendiz = () => {
     alert("Eliminar aprendices")
 };
 
-
-
-const ListarProgramas = (lista_programas) => {
-    alert("En Listar Programas")
+const ListarProgramas = () => {
+    if (lista_programas.length == 0) {
+        alert("No hay programas aun");
+    } else {
+        let mensaje_programas = "";
+        for (let objeto of lista_programas) {
+            mensaje_programas += `Ficha : ${objeto.numero_ficha}, Nombre : ${objeto.nombre_programa}\n`;
+        };
+        alert(mensaje_programas);
+    };
 };
 
 const IngresarPrograma = () => {
      //Guardar programas
     let cantidad = parseInt(prompt("Digite la cantidad de programas que desea guardar"));
 
-    let lista_programas = [];
     for (let i = 0; i < cantidad; i++) {
-        Programa.numero_ficha = parseInt(prompt("Digite el numero de la ficha"));
-        Programa.nombre_programa = prompt("Digite el nombre del programa");
-        lista_programas.push(Programa);
-    };
-    return lista_programas;
+        let programa = {
+            numero_ficha: parseInt(prompt("Ingrese el numero de la ficha")),
+            nombre_programa: prompt("Ingrese el nombre de la ficha")
+        }
+        lista_programas.push(programa);
+    }
+
+    console.log(lista_programas);
 };
 
-const ActualizarPrograma = (lista_programas) => {
+const ActualizarPrograma = () => {
     alert("act pro");
 };
 
-const EliminarPrograma = (lista_programas) => {
+const EliminarPrograma = () => {
     alert("eli pro");
 };
 
