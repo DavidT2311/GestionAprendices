@@ -14,10 +14,10 @@ function aprendizModel(documento, nombre, apellido, telefono, direccion, program
 };
 
 //Creando modelo programa
-function programaModel (numero_ficha, nombre_programa) { //Modelo para los programas
-    this.numero_ficha = numero_ficha;
-    this.nombre_programa = nombre_programa;
-};
+//function programaModel (numero_ficha, nombre_programa) { //Modelo para los programas
+//    this.numero_ficha = numero_ficha;
+//    this.nombre_programa = nombre_programa;
+//};
 
 const menuInicio = () => {
     let opcion;
@@ -130,7 +130,7 @@ const ListarAprendices = () => {
         let mensaje_aprendices = "";
         //Recorrer la lista de aprendices
         for (let objeto of lista_aprendices) {
-            mensaje_aprendices += `Documento : ${objeto.documento}, Nombre : ${objeto.nombre}\n`;
+            mensaje_aprendices += `${objeto.documento} - ${objeto.nombre} - ${objeto.apellido} - ${objeto.telefono} - ${objeto.direccion} - ${objeto.programa}\n`;
         };
         alert(mensaje_aprendices);
     };
@@ -151,7 +151,22 @@ const IngresarAprendiz = () => {
         
         let nuevo_aprendiz = new aprendizModel(documento, nombre, apellido, telefono, direccion, programa);
         //Se guardan los cambios en los aprendices
-        lista_aprendices.push(nuevo_aprendiz);
+
+        if (!lista_aprendices.length == 0) {
+            for (let objeto of lista_aprendices) {
+                if (documento == objeto.documento) {
+                    alert("El aprendiz ya existe");
+                    break;
+                } else {
+                    lista_aprendices.push(nuevo_aprendiz);
+                    alert("Se ha ingresado el aprendiz correctamente");
+                    break;
+                };
+            };
+        } else {
+            lista_aprendices.push(nuevo_aprendiz);
+            alert("Se ha ingresado el aprendiz correctamente");
+        };
     };
 };
 
@@ -160,7 +175,28 @@ const ActualizarAprendiz = () => {
 };
 
 const EliminarAprendiz = () => {
-    alert("Eliminar aprendices")
+    //Pedimos el aprendiz
+    let aprendiz_eliminar = parseInt(prompt("Ingrese el numero de documento del aprendiz por eliminar"));
+
+    //Buscamos el aprendiz en los objetos del arreglo de aprendices
+    let es_encotrado = false;
+    lista_aprendices.forEach((objeto, indice) => {
+        //Validamos que el aprendiz a eliminar digitado por el usuario sea igual al aprendiz dentro del arreglo de aprendicea
+        if (aprendiz_eliminar == objeto.documento) {
+            //Eliminamos el objeto de la arreglo de aprendices
+            lista_aprendices.splice(indice, 1);
+            es_encotrado = true
+        };
+    });
+
+    //Imprimimos el mensaje segun el cambio de la variable
+    if (es_encotrado) {
+        alert("Se ha eliminado el aprendiz");
+    } else {
+        alert("No se ha encontrado el aprendiz");
+    };
+    
+
 };
 
 const ListarProgramas = () => {
@@ -184,18 +220,46 @@ const IngresarPrograma = () => {
             numero_ficha: parseInt(prompt("Ingrese el numero de la ficha")),
             nombre_programa: prompt("Ingrese el nombre de la ficha")
         }
-        lista_programas.push(programa);
-    }
-
-    console.log(lista_programas);
+        
+        for (let objeto of lista_programas) {
+            if (programa.numero_ficha == objeto.numero_ficha) {
+                alert("El programa ya existe");
+                break;
+            } else {
+                lista_programas.push(programa);
+                alert("Se ha ingresado el programa correctamente");
+                break;
+            };
+        };
+    };
 };
 
 const ActualizarPrograma = () => {
-    alert("act pro");
+    
+    
 };
 
 const EliminarPrograma = () => {
-    alert("eli pro");
+    //Pedimos el programa
+    let programa_eliminar = parseInt(prompt("Ingrese el numero de ficha del programa por eliminar"));
+
+    //Buscamos el programa en los objetos de la lista de programas
+    let es_encotrado = false;
+    lista_programas.forEach((objeto, indice) => {
+        //Validamos que el programa a eliminar digitado por el usuario sea igual al programa dentro del arreglo de programas
+        if (programa_eliminar == objeto.numero_ficha) {
+            //Eliminamos el objeto de la arreglo de programas
+            lista_programas.splice(indice, 1);
+            es_encotrado = true;
+        };
+    });
+
+    //Imprimimos el mensaje segun el cambio de la variable
+    if (es_encotrado) {
+        alert("Se ha eliminado el programa");
+    } else {
+        alert("No se ha encontrado el programa");
+    };
 };
 
 
