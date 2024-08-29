@@ -2,8 +2,13 @@ let lista_aprendices = [];
 let lista_programas = [];
 
 const obtenerDatos = () => {
+    if (!JSON.parse(localStorage.getItem("ListaAprendices")) == null) {
         lista_aprendices = JSON.parse(localStorage.getItem("ListaAprendices"));
+    }
+
+    if (!JSON.parse(localStorage.getItem("ListaProgramas")) == null) {
         lista_programas = JSON.parse(localStorage.getItem("ListaProgramas"));
+    }
 };
 
 //Creando modelo aprendiz
