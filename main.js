@@ -2,13 +2,14 @@ let lista_aprendices = [];
 let lista_programas = [];
 
 const obtenerDatos = () => {
-    if (!JSON.parse(localStorage.getItem("ListaAprendices")) == null) {
+    if (JSON.parse(localStorage.getItem("ListaAprendices")) != null) {
         lista_aprendices = JSON.parse(localStorage.getItem("ListaAprendices"));
-    }
+    };
 
-    if (!JSON.parse(localStorage.getItem("ListaProgramas")) == null) {
+    if (JSON.parse(localStorage.getItem("ListaProgramas")) != null) {
         lista_programas = JSON.parse(localStorage.getItem("ListaProgramas"));
-    }
+    };
+    return true;
 };
 
 //Creando modelo aprendiz
@@ -462,6 +463,9 @@ const actualizarDireccionAprendiz = (indice_aprendiz) => {
     alert("Se ha actualizado la direccion correctamente");
 };
 
-obtenerDatos();
-menuInicio();
+let estado_copia = obtenerDatos();
+
+if (estado_copia == true) {
+    menuInicio();
+}
 
