@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-2 mt-auto">
             <!-- Incluimos el boton para agregar un Aprendiz o Programa -->
-            {% include "Botones/Aniadir.html" with ModalEleccion="Programas" %}
+            {% include "Botones/Aniadir.html" with ModalEleccion="AgregarPrograma" %}
         </div>
     </div>
 
@@ -41,8 +41,8 @@
                 </td>
                 <td>
                     <!-- Incluimos los botones para Editar y Eliminar -->
-                    {% include "Botones/Editar.html" with PaginaElegida="ListarProgramas" %}
-                    {% include "Botones/Eliminar.html" with PaginaElegida="ListarProgramas" %}
+                    {% include "Botones/Editar.html" with ModalEleccion="EditarPrograma" Ficha="{{i.Numero_Ficha}}" %}
+                    {% include "Botones/Eliminar.html" with ModalEleccion="Programas" %}
                 </td>
             </tr>
             {% endfor %}
@@ -50,6 +50,8 @@
     </table>
 
     <!-- Incluimos la ventana modal para agregar un aprendiz -->
-    {% include "Programas/AniadirProgramas.html" with ModalEleccion="Programas" %}
+    {% include "Programas/AniadirProgramas.html" with ModalEleccion="AgregarPrograma" %}
+    <!-- Incluimos la ventana modal para editar un aprendiz -->
+    {% include "Programas/EditarPrograma.html" with ModalEleccion="EditarPrograma" %}
 
 {% endblock %}

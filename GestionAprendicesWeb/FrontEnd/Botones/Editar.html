@@ -1,4 +1,5 @@
 <!-- Boton para editar un registro -->
-<button class="btn btn-sm btn-success" onclick="window.location.href='{% url PaginaElegida %}'">
+<button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#{{ ModalEleccion }}">
     <i class="fa-solid fa-pencil"></i>
+    <span>{{ Ficha }}</span>
 </button>

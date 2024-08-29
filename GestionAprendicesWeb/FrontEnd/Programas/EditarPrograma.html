@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar programa</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar programa</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -12,6 +12,7 @@
                 <form action="{% url 'AgregarPrograma' %}" method="post"> {% csrf_token %}
                     <div class="col-md-12 mb-4">
                         <label for="" class="form-label">Numero de ficha</label>
+                        <span>{{ Ficha }}</span>
                         <input type="number" name="Numero_Ficha" id="" class="form-control" required>
                     </div>
 
