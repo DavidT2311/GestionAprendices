@@ -189,7 +189,7 @@ const ActualizarAprendiz = () => {
     //Se pregunta al usuario que aprendiz desea actualizar
     let actualizar_aprendices = parseInt(prompt("Ingrese el numero de documento del aprendiz por actualizar"));
 
-    let mensaje = "";
+    let mensaje = "No se ha encontrado el programa";
 
     //Validacion si no hay aprendices
     if (lista_aprendices.length == 0) {
@@ -203,8 +203,6 @@ const ActualizarAprendiz = () => {
         if (actualizar_aprendices == elemento.documento) {
             mensaje = "Se ha encontrado el aprendiz";
             indice_aprendiz = indice;
-        } else {
-            mensaje = "No se ha encontrado el aprendiz";
         };
     });
 
@@ -286,7 +284,7 @@ const ActualizarPrograma = () => {
     //Se pregunta al usuario que programa desea actualizar
     let actualizar_programa = parseInt(prompt("Ingrese el numero de ficha por actualizar"));
 
-    let mensaje = "";
+    let mensaje = "No se ha encontrado el programa";
 
     //Validacion si no hay programas
     if (lista_aprendices.length == 0) {
@@ -300,8 +298,6 @@ const ActualizarPrograma = () => {
         if (actualizar_programa == elemento.numero_ficha) {
             mensaje = "Se ha encontrado el programa";
             indice_programa = indice;
-        } else {
-            mensaje = "No se ha encontrado el programa";
         };
     });
 
